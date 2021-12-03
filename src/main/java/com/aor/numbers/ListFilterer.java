@@ -1,5 +1,6 @@
 package com.aor.numbers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListFilterer {
@@ -8,10 +9,13 @@ public class ListFilterer {
     public ListFilterer(GenericListFilter filter) {
         this.filter = filter;
     }
-
     
     public List<Integer> filter(List<Integer> list){
-        if (filter.accept())
-        return list;
+        List<Integer> out=new ArrayList<>();
+
+        for (Integer numb:list){
+            if (filter.accept(numb)){out.add(numb);}
+        }
+        return out;
     }
 }
